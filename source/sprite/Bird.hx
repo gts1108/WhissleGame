@@ -20,7 +20,8 @@ class Bird extends FlxSprite
         
         //this.drag.set(0, DRAG);
         //acceleration.y = GRAVITY;
-        maxVelocity.y = 300;
+		velocity.set(0, 0);
+		maxVelocity.set(350, 350);
           
     }
 
@@ -29,7 +30,18 @@ class Bird extends FlxSprite
     {  
         super.update(elapsed);
         acceleration.y = GRAVITY;
-        if(FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.C )
+		velocity.x = 0;
+
+		if (FlxG.keys.pressed.D)
+		{
+			velocity.x = JUMP_FORCE;
+		}
+		else if (FlxG.keys.pressed.A)
+		{
+			velocity.x = -JUMP_FORCE;
+		}
+
+		if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.W)
         {
             
             velocity.y = -JUMP_FORCE; 
